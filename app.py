@@ -11,39 +11,56 @@ db.init_app(app)
 
 
 @app.route('/')
-def indeddx():
-    return redirect('/login')
-    return 'index'
+def hello_world():
+    return render_template('base.html')
 
-
+@app.route('/home')
+def home():
+    return render_template('home.html')
 
 @app.route('/login')
 def login():
-    return render_template("login.html")
-
-@app.route('/doLogin',methods=['GET','POST'])
-def doLogin():
-    name = request.form.get("uname")
-    pwd = request.form.get("upwd")
-    # conn = pymysql.connect(
-    #     host="127.0.0.1",
-    #     port=3306,
-    #     db="pcmp1",
-    #     user="root",
-    #     password="root",
-    #     charset="utf8"
-    # )
-    if name=="pea" and pwd=="111":
-        session['name']=name
-        return "登陆成功"
-        # return render_template("main.html")
+    if request.method == 'GET':
+        return render_template('login.html')
     else:
-        flash("密码不正确")
-        return render_template("login.html")
+        pass
 
-@app.route('/main')
-def main1():
-    return render_template("main.html")
+@app.route('/schoolQuery', methods=['GET', 'POST'])
+def schoolQuery():
+    if request.method == 'GET':
+        return render_template('schoolQuery.html')
+    else:
+        pass
+
+@app.route('/catQuery', methods=['GET', 'POST'])
+def catQuery():
+    if request.method == 'GET':
+        return render_template('catQuery.html')
+    else:
+        pass
+
+
+# @app.route('/doLogin',methods=['GET','POST'])
+# def doLogin():
+#     name = request.form.get("uname")
+#     pwd = request.form.get("upwd")
+#     # conn = pymysql.connect(
+#     #     host="127.0.0.1",
+#     #     port=3306,
+#     #     db="pcmp1",
+#     #     user="root",
+#     #     password="root",
+#     #     charset="utf8"
+#     # )
+#     if name=="pea" and pwd=="111":
+#         session['name']=name
+#         return "登陆成功"
+#         # return render_template("main.html")
+#     else:
+#         flash("密码不正确")
+#         return render_template("login.html")
+
+
 #
 # @app.route('/jinja')
 # def jinja():
