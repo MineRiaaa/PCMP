@@ -22,6 +22,7 @@ def home():
 def login():
     if request.method == 'GET':
         return render_template('login.html')
+        print('登陆页面打开成功！')
     else:
         pass
 
@@ -29,6 +30,7 @@ def login():
 def register():
     if request.method == 'GET':
         return render_template('register.html')
+        print('注册页面打开成功！')
     else:
         pass
 
